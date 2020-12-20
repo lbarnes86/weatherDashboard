@@ -43,8 +43,21 @@
           </ul>
         </div>
       </div>
-     
-
+      <!-- current weather column -->
+      <div class="col-sm-9 results d-none">
+        <div class="card current">
+          <div class="card-body">
+            <h5 class="card-title"><span id="city"></span>&nbsp;(<span id="date"></span>)</h5>
+            <p class="card-text"><img id="icon" src="https://openweathermap.org/img/wn/01d@2x.png"></p>
+            <p class="card-text text-muted">Temperature: <span id="temp"></span>&nbsp;&deg;F</p>
+            <p class="card-text text-muted">Wind Speed: <span id="windSpeed"></span>&nbsp;MPH</p>
+            <p class="card-text text-muted">Humidity: <span id="humidity"></span>&nbsp;%</p>
+            <p class="card-text text-muted">UV Index: <span id="uvIndex" class="p-1 mb-3 rounded text-white"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    
 </body>
 
 </html>
