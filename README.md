@@ -6,7 +6,7 @@
 
 - Project Repository: [Repository](https://github.com/lbarnes86/WeatherDashboard)
 
-- Project Deployment: [Deployment]()
+- Project Deployment: [Deployment](https://lbarnes86.github.io/WeatherDashboard/.)
 
 ## Table of Contents
 
@@ -19,19 +19,19 @@
 
 ## Description
 
->This application can make it easier to plan your day.
+>This application will allow user to search the current weather for a city.
 
 ## Usage
 
 ```
-This App shows the current Day. It is broken down from 9AM-5PM sections. Once the user types in the memo to the right of each slot is a blue disk button that they can click on that will save the memo.
-
+When a city is searched, user will be presented with current and future conditions for that city and that city will be added to the search history.
 ```
 
 ## Dependencies
 
 - [JavaScript](https://www.javascript.com/) 
-- [jQuery](https://jquery.com/) 
+- [Open Weather Map](https://openweathermap.org/) 
+- [jQuery](https://api.jquery.com/) 
 - [CSS](https://www.w3schools.com/css/css_intro.asp) 
 - [HTML](https://html.com/) 
 
