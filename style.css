@@ -1,0 +1,50 @@
+.container {
+    margin-right: 50px;
+    margin-left: 5px;
+}
+
+.bg-dark {
+    background-color: #704407!important;
+}
+
+.city-history:hover {
+    background-color: aliceblue;
+    opacity: 0.5;
+    color: #5fa3ec;
+}
+
+.bg-light {
+    background-color: #faade9!important;
+}
+
+.card.history {
+    display: none;
+  }
+
+   /* Small devices (landscape phones, 576px and up) */
+   @media (min-width: 576px) {
+    .card.history {
+      display: block;
+    }
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    .card.history {
+      display: block;
+    }
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) { 
+    .card.history {
+      display: block;
+    }
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .card.history {
+      display: block;
+    }
+  }
