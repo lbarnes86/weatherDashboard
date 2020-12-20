@@ -37,6 +37,11 @@ When a city is searched, user will be presented with current and future conditio
 
 ## Screenshots
 
+<img src="https://user-images.githubusercontent.com/70309736/102707678-a3f67b80-4262-11eb-94ca-fa62633948dd.png">
+
+<img src="https://user-images.githubusercontent.com/70309736/102707668-8d502480-4262-11eb-9554-36223d0bfafe.png">
+
+<img src="https://user-images.githubusercontent.com/70309736/102707669-8e815180-4262-11eb-8b75-5030ce88b099.png">
 
 
 ## Contributors

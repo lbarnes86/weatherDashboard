@@ -73,7 +73,7 @@
                 if (index > 4)
                     return;
 
-                var html = htmlTemplate(moment().add('days', index + 1).format('MM/DD/YYYY'), daily.weather[0].icon, daily.weather[0].description, daily.temp.day, daily.humidity);
+                var html = htmlTemplate(moment().add(index + 1, 'days').format('MM/DD/YYYY'), daily.weather[0].icon, daily.weather[0].description, daily.temp.day, daily.humidity);
 
                 $(".forecast").append(html);
 
