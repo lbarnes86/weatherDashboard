@@ -4,17 +4,17 @@
 }
 
 .bg-dark {
-    background-color: #704407!important;
-}
-
-.city-history:hover {
-    background-color: aliceblue;
-    opacity: 0.5;
-    color: #5fa3ec;
+  background-color: #0b6294!important;
 }
 
 .bg-light {
-    background-color: #faade9!important;
+  background-color: #9e9a9c!important;
+}
+
+.city-history:hover {
+  background-color: lightgray;
+  opacity: 0.5;
+  color: #007bff;
 }
 
 .card.history {
