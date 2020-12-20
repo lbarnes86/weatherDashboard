@@ -59,5 +59,22 @@
             $("#city").html(weatherInfo.current.name);
             $("#date").html(moment().format('MM/DD/YYYY'));
             $("#temp").html(weatherInfo.forecast.current.temp);
-            $("#humidity").html(weatherInfo.forecast.current.humidity);
             $("#windSpeed").html(weatherInfo.forecast.current.wind_speed);
+            $("#humidity").html(weatherInfo.forecast.current.humidity);
+
+            $("#uvIndex").html(weatherInfo.forecast.current.uvi);
+            $("#uvIndex").removeClass('bg-success bg-warning bg-orange bg-danger bg-violet');
+            var indexClass = uviCalc(weatherInfo.forecast.current.uvi);
+            $("#uvIndex").addClass(indexClass);
+
+            $(".forecast").html('');
+            weatherInfo.forecast.daily.forEach( (daily, index) => {
+             
+                if (index > 4)
+                    return;
+
+                var html = htmlTemplate(moment().add('days', index + 1).format('MM/DD/YYYY'), daily.weather[0].icon, daily.weather[0].description, daily.temp.day, daily.humidity);
+
+                $(".forecast").append(html);
+
+            });
