@@ -22,8 +22,29 @@
       <h1>Weather Dashboard</h1>
     </span>
   </nav>
- 
+  <div class="container-fluid">
+    <div class="row my-3">
 
+      <div class="col-sm-3 bg-light">
+        <div class="search-header my-1">
+          <h5>Search for City:</h5>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="cityInput">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button" id="srchButton">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card history">
+          <ul class="cities list-group list-group-flush">
+          >
+          </ul>
+        </div>
+      </div>
+   
 </body>
 
 </html>
