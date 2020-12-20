@@ -182,10 +182,10 @@
                         }
                     );
 
-                    //refresh search history view
+                    
                     updateSearchHistory();
 
-                    //update weather information for matched city
+                    
                     updateWeatherInfoView(weather);
 
                     $('.results').removeClass("d-none");
@@ -198,8 +198,7 @@
         }
 
         function getCurrentWeatherInfo(query, success, error) {
-            //api.openweathermap.org/data/2.5/weather?q={city name},{state code}&appid={your api key}
-
+            
             var url = `https://api.openweathermap.org/data/2.5/weather?appid=${appid}&q=${query}`;
 
             return apiConnect(url, success, error);
@@ -212,7 +211,7 @@
             return apiConnect(url, success, error);
         }
         function get5DayWeatherForecast(lat, lon, success, error) {
-            //api.openweathermap.org/data/2.5/onecall?appid=96404ebac51d984e233fe3941651e4ab&exclude=hourly,minutely&units=imperial&lat=33.75&lon=-84.39
+            
 
             var url = `https://api.openweathermap.org/data/2.5/onecall?appid=${appid}&exclude=hourly,minutely&units=imperial&lat=${lat}&lon=${lon}`;
 
@@ -226,7 +225,23 @@
                     url: endpoint,
                     type: "GET",
                     success: function (data) {
-                        //console.log('Weather API connected {Success}-- Endpoint: ', endpoint, 'Response data:', data);
+                        
 
                         if (successCallback) {
                             successCallback(data);
+                            }
+                    },
+                    error: function (error) {
+                        
+
+                        if (errorCallback) {
+                            errorCallback(error);
+                        }
+                    }
+                }
+            );
+        }
+        OnLoad();
+
+    });
+})(window.jQuery);
