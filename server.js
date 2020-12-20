@@ -1,7 +1,7 @@
 (function ($) {
     "use strict";
     $(document).ready(function () {
-        var appid = "96404ebac51d984e233fe3941651e4ab";
+        var appid = "ef34ba3ab0a5fd5e48614afa8d90459e";
         var weatherKey = "weatherHistory";
 
         $("#srchButton").click(function (index, element) {
@@ -63,7 +63,7 @@
             $("#humidity").html(weatherInfo.forecast.current.humidity);
 
             $("#uvIndex").html(weatherInfo.forecast.current.uvi);
-            $("#uvIndex").removeClass('bg-success bg-warning bg-orange bg-danger bg-violet');
+            $("#uvIndex").removeClass('bg-success bg-warning bg-dark bg-danger bg-light');
             var indexClass = uviCalc(weatherInfo.forecast.current.uvi);
             $("#uvIndex").addClass(indexClass);
 
@@ -148,4 +148,66 @@
                 OnSearch(lastCity.Name);
             }
 
+        }
+        function OnSearch(query) {
+            if (!query) {
+                alert('Please enter a valid city!');
+                return;
+            }
+
+            getCurrentWeatherWithForecast(query);
+        }
+
+        function getCurrentWeatherWithForecast(query) {
+            weatherService.getCurrentWeatherInfo(query, function (weatherResponse) {
+
+                var weatherInfo = weatherResponse;
+
+                if (weatherInfo.cod !== 200) {
+                    alert(weatherInfo.messsage);
+                    return;
+                }
+
+                weatherService.get5DayWeatherForecast(weatherInfo.coord.lat, weatherInfo.coord.lon, function (forecastResponse) {
+                    var forecastInfo = forecastResponse;
+
+                    var weather = {
+                        current: weatherInfo,
+                        forecast: forecastInfo
+                    }
+                    storageService.saveToHistory(
+                        {
+                            Id: weather.current.id,
+                            Name: weather.current.name
+                        }
+                    );
+
+                    //refresh search history view
+                    updateSearchHistory();
+
+                    //update weather information for matched city
+                    updateWeatherInfoView(weather);
+
+                    $('.results').removeClass("d-none");
+                }, function (error) {
+                    alert('Unable to get forecast information for: ', query);
+                });
+            }, function (error) {
+                alert('Unable to get weather information for: ', query);
+            });
+        }
+
+        function getCurrentWeatherInfo(query, success, error) {
+            //api.openweathermap.org/data/2.5/weather?q={city name},{state code}&appid={your api key}
+
+            var url = `https://api.openweathermap.org/data/2.5/weather?appid=${appid}&q=${query}`;
+
+            return apiConnect(url, success, error);
+        }
+        function getCurrentUVInfo(lat, lon, success, error) {
+            //api.openweathermap.org/data/2.5/uvi?lat=37.75&lon=-122.37
+
+            var url = `https://api.openweathermap.org/data/2.5/uvi?appid=${appid}&lat=${lat}&lon=${lon}`;
+
+            return apiConnect(url, success, error);
         }
