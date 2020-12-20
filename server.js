@@ -78,3 +78,74 @@
                 $(".forecast").append(html);
 
             });
+        }
+
+        function htmlTemplate(date, icon, description, temp, humidity) {
+            //`` allows me to accomplish javascript string interpolation
+            var template = `
+            <div class="card text-white bg-primary my-2" style="min-width: 11rem; max-width: 11rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${date}</h5>
+                        <p class="card-text"><img src="https://openweathermap.org/img/wn/${icon}@2x.png"></p>
+                        <p class="card-text"><span>${description}</span></p>
+                        <p class="card-text">Temp: <span>${temp}</span>&nbsp;&deg;F</p>
+                        <p class="card-text">Humidity: <span>${humidity}</span>&nbsp;%</p>
+                    </div>
+                </div>
+            `;
+
+            return template;
+
+        }
+
+        function addCityToHistory(city) {
+            var history = getHistory() ?? [];
+
+            if (history.filter(e => e.Id == city.Id && e.Name == city.Name).length == 0) {
+
+                //Add new city to object array
+                history.push(city);
+
+                //update local storage with new array
+                localStorage.setItem(weatherKey, JSON.stringify(history));
+            }
+        }
+        function getHistory() {
+            var history = JSON.parse(localStorage.getItem(weatherKey));
+
+            if (!history) {
+                history = [];
+            }
+
+            return history;
+        }
+
+        function getLastCity() {
+            var cities = getHistory();
+            return cities[cities.length - 1];
+        }
+
+        var storageService = {
+            saveToHistory: addCityToHistory,
+            getHistory: getHistory,
+            getLastCity: getLastCity
+        }
+        var weatherService = {
+            getCurrentWeatherInfo: getCurrentWeatherInfo,
+            getCurrentUVInfo: getCurrentUVInfo,
+            get5DayWeatherForecast: get5DayWeatherForecast
+        }
+
+        function OnLoad() {
+          
+            updateSearchHistory();
+
+
+            var lastCity = storageService.getLastCity();
+
+            if (lastCity) {
+                $('.results').removeClass("d-none");
+                OnSearch(lastCity.Name);
+            }
+
+        }
