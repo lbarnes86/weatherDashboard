@@ -50,7 +50,7 @@ When a city is searched, user will be presented with current and future conditio
 
 ## License
 
-[![license](https://img.shields.io/badge/License-ISC-brightgreen.svg)](https://choosealicense.com/licenses/isc/)
-<br />
+![License](https://img.shields.io/badge/license-MIT-green")
 
-Copyright© 2020 [Lloyd Barnes](https://lbarnes86.github.io/updated_Portfolio/)
+
+Copyright© 2021 [Lloyd Barnes](https://lbarnes86.github.io/react-portfolio/)
